@@ -7,5 +7,6 @@
             "email": "alexxisgreat@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {}
 }
