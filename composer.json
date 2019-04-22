@@ -1,5 +1,6 @@
 {
     "name": "alexxis/project-lvl1-s482",
+    "bin": ["bin/brain-games"],
     "authors": [
         {
             "name": "Alexey Starikov",
