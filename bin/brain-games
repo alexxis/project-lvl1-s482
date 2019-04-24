@@ -1,9 +1,10 @@
 #!/usr/bin/env php
 <?php
 
-use function \cli\line;
+use function BrainGames\Cli\run;
 
-line("Welcome to the Brain Games!");
+$autoloadPath = __DIR__ . '/../vendor/autoload.php';
 
-$name = \cli\prompt('May I have your name?');
-line("Hello, %s!", $name);
+require_once $autoloadPath;
+
+run();
