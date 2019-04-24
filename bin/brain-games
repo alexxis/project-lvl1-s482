@@ -1,10 +1,12 @@
 #!/usr/bin/env php
 <?php
 
-use function BrainGames\Cli\run;
+#use function BrainGames\Cli\run;
 
 $autoloadPath = __DIR__ . '/../vendor/autoload.php';
 
 require_once $autoloadPath;
 
-run();
+#run();
+
+BrainGames\Cli\run();
