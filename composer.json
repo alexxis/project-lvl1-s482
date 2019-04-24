@@ -9,6 +9,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "wp-cli/php-cli-tools": "^2.1"
+        "wp-cli/wp-cli": "^2.1"
     }
 }
