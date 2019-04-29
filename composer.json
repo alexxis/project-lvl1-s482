@@ -8,10 +8,16 @@
         }
     ],
     "minimum-stability": "dev",
+    "scripts": {
+        "phpcs": "phpcs"
+    },
     "autoload": {
         "files": ["src/Cli.php"]
     },
     "require": {
         "wp-cli/wp-cli": "^2.1@dev"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.0@dev"
     }
 }
