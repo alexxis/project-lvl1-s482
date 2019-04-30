@@ -2,7 +2,7 @@
 
 namespace BrainGames\Cli;
 
-require __DIR__ . '/../vendor/autoload.php';
+# require __DIR__ . '/../vendor/autoload.php';
 
 use function \cli\line;
 
