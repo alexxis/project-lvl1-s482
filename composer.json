@@ -1,6 +1,9 @@
 {
     "name": "alexxis/project-lvl1-s482",
-    "bin": ["bin/brain-games"],
+    "bin": [
+        "bin/brain-games",
+        "bin/brain-even"
+    ],
     "authors": [
         {
             "name": "Alexey Starikov",
@@ -12,7 +15,10 @@
         "phpcs": "phpcs"
     },
     "autoload": {
-        "files": ["src/Cli.php"]
+        "files": [
+            "src/Cli.php",
+            "src/Even.php"
+        ]
     },
     "require": {
         "wp-cli/wp-cli": "^2.1@dev"

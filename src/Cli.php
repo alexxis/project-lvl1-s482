@@ -2,8 +2,6 @@
 
 namespace BrainGames\Cli;
 
-# require __DIR__ . '/../vendor/autoload.php';
-
 use function \cli\line;
 
 function run()
