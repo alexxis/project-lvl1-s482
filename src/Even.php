@@ -49,7 +49,6 @@ function run()
             line("Let's try again, %s!", $name);
             break;
         }
-
     }
 
     line("Congratulations, %s!", $name);
