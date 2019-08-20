@@ -29,7 +29,7 @@ function run()
     $attempt = 1;
 
     line("Welcome to the Brain Games!");
-    line("Answer \"yes\" if number even otherwise answer \"no\".\n");
+    line("Answer \"yes\" if the number is even, otherwise answer \"no\".\n");
     $name = \cli\prompt('May I have your name?');
     line("Hello, %s!", $name);
 
@@ -38,14 +38,14 @@ function run()
         $numberAsString = (string) $number;
 
         line("Question: %s", $numberAsString);
-        $answer = \cli\prompt('Your answer');
+        $answer = \cli\prompt('Your answer is:');
         $checkAnswer = isAnswerCorrect($number, $answer);
 
         if ($checkAnswer === true) {
             line("Correct!");
             $attempt += 1;
         } else {
-            line("'yes' is wrong answer ;(. Correct answer was 'no'.");
+            line("'yes' is the wrong answer ;(. The correct answer was 'no'.");
             line("Let's try again, %s!", $name);
             break;
         }
