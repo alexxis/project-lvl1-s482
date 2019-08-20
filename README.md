@@ -6,4 +6,6 @@
 
 [![Build Status](https://travis-ci.org/alexxis/project-lvl1-s482.svg?branch=master)](https://travis-ci.org/alexxis/project-lvl1-s482)
 
-Install and run: https://asciinema.org/a/JiTT4viRf2VfF8Xo7y64HQWYh
+Install and run brain-games: <https://asciinema.org/a/263448>
+
+Install and run: <https://asciinema.org/a/JiTT4viRf2VfF8Xo7y64HQWYh>
