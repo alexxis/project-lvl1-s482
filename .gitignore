@@ -91,3 +91,6 @@ modules.xml
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/phpstorm+all
+
+# alexxis' rules
+.vscode/
