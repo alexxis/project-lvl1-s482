@@ -2,7 +2,7 @@
 
 namespace BrainGames\Even;
 
-use function \cli\line;
+use function cli\line;
 
 function randomNumber()
 {
