@@ -19,11 +19,11 @@ function randomAction()
 function isAnswerCorrect($firstNum, $secondNum, $act, $answ)
 {
     if ($act === '+') {
-        $correctAnswer = $firstNum + $secondNum;
+        $correctAnswer = (string) ($firstNum + $secondNum);
     } elseif ($act === '-') {
-        $correctAnswer = $firstNum - $secondNum;
+        $correctAnswer = (string) ($firstNum - $secondNum);
     } elseif ($act === '*') {
-        $correctAnswer = $firstNum * $secondNum;
+        $correctAnswer = (string) ($firstNum * $secondNum);
     }
 
     if ($answ === $correctAnswer) {
