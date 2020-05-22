@@ -48,10 +48,10 @@ function run()
         $action = randomAction();
         $firstNumberAsString = (string) $firstNumber;
         $secondNumberAsString = (string) $secondNumber;
-        $expressionAsString = "{$firstNumberAsString}{$action}{$secondNumberAsString}";
+        $expressionAsString = "{$firstNumberAsString} {$action} {$secondNumberAsString}";
 
         line("Question: %s", $expressionAsString);
-        $answer = \cli\prompt('Your answer is:');
+        $answer = \cli\prompt('Your answer is');
         $checkAnswer = isAnswerCorrect($firstNumber, $secondNumber, $action, $answer);
 
         if ($checkAnswer === true) {
