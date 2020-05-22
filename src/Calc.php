@@ -16,7 +16,6 @@ function randomAction()
     return $actions[random_int(0, 2)];
 }
 
-// TODO: to prepare current function
 function isAnswerCorrect($firstNum, $secondNum, $act, $answ)
 {
     if ($act === '+') {
