@@ -33,6 +33,19 @@ function isAnswerCorrect($firstNum, $secondNum, $act, $answ)
     }
 }
 
+function corrAnswer($act, $firstNum, $secondNum)
+{
+    if ($act === '+') {
+        $correctAnswer = $firstNum + $secondNum;
+    } elseif ($act === '-') {
+        $correctAnswer = $firstNum - $secondNum;
+    } elseif ($act === '*') {
+        $correctAnswer = $firstNum * $secondNum;
+    }
+
+    return $correctAnswer;
+}
+
 function run()
 {
     $attempt = 1;
@@ -53,16 +66,17 @@ function run()
         line("Question: %s", $expressionAsString);
         $answer = \cli\prompt('Your answer is');
         $checkAnswer = isAnswerCorrect($firstNumber, $secondNumber, $action, $answer);
+        $cAnswer = corrAnswer($action, $firstNumber, $secondNumber);
 
         if ($checkAnswer === true) {
-            line("Question:");
-            line("Your answer:");
+            line("Question: {$expressionAsString}");
+            line("Your answer: {$answer}");
             line("Correct!");
             $attempt += 1;
         } else {
-            line("Question:");
-            line("Your answer:");
-            line("'yes' is the wrong answer ;(. The correct answer was 'no'.");
+            line("Question: {$expressionAsString}");
+            line("Your answer: {$answer}");
+            line("'yes' is the wrong answer ;(. The correct answer was {$cAnswer}.");
             line("Let's try again, %s!", $name);
             break;
         }
