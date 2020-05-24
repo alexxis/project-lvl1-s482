@@ -16,15 +16,9 @@ function randomAction()
     return $actions[random_int(0, 2)];
 }
 
-function isAnswerCorrect($firstNum, $secondNum, $act, $answ)
+function isAnswerCorrect($act, $firstNum, $secondNum, $answ)
 {
-    if ($act === '+') {
-        $correctAnswer = (string) ($firstNum + $secondNum);
-    } elseif ($act === '-') {
-        $correctAnswer = (string) ($firstNum - $secondNum);
-    } elseif ($act === '*') {
-        $correctAnswer = (string) ($firstNum * $secondNum);
-    }
+    $correctAnswer = (string) correctAnswer($act, $firstNum, $secondNum);
 
     if ($answ === $correctAnswer) {
         return true;
@@ -33,17 +27,15 @@ function isAnswerCorrect($firstNum, $secondNum, $act, $answ)
     }
 }
 
-function corrAnswer($act, $firstNum, $secondNum)
+function correctAnswer($act, $firstNum, $secondNum)
 {
     if ($act === '+') {
-        $correctAnswer = $firstNum + $secondNum;
+        return $firstNum + $secondNum;
     } elseif ($act === '-') {
-        $correctAnswer = $firstNum - $secondNum;
-    } elseif ($act === '*') {
-        $correctAnswer = $firstNum * $secondNum;
+        return $firstNum - $secondNum;
     }
-
-    return $correctAnswer;
+    
+    return $firstNum * $secondNum;
 }
 
 function run()
@@ -53,7 +45,8 @@ function run()
     line("Welcome to the Brain Games!");
     line("What is the result of the expression?\n");
     $name = \cli\prompt('May I have your name?');
-    line("Hello, %s!", $name);
+    line("Hello, %s!", $name, "\n");
+    //line("\n");
 
     while ($attempt < 4) {
         $firstNumber = randomNumber();
@@ -65,10 +58,10 @@ function run()
 
         line("Question: %s", $expressionAsString);
         $answer = \cli\prompt('Your answer is');
-        $checkAnswer = isAnswerCorrect($firstNumber, $secondNumber, $action, $answer);
-        $cAnswer = corrAnswer($action, $firstNumber, $secondNumber);
+        $isCheckGood = isAnswerCorrect($action, $firstNumber, $secondNumber, $answer);
+        $corrAnswer = correctAnswer($action, $firstNumber, $secondNumber);
 
-        if ($checkAnswer === true) {
+        if ($isCheckGood === true) {
             line("Question: {$expressionAsString}");
             line("Your answer: {$answer}");
             line("Correct!");
@@ -76,11 +69,13 @@ function run()
         } else {
             line("Question: {$expressionAsString}");
             line("Your answer: {$answer}");
-            line("'yes' is the wrong answer ;(. The correct answer was {$cAnswer}.");
+            line("'{$answer}' is the wrong answer ;(. The correct answer was '{$corrAnswer}'.");
             line("Let's try again, %s!", $name);
             break;
         }
     }
 
-    line("Congratulations, %s!", $name);
+    if ($attempt > 3) {
+        line("Congratulations, %s!", $name);
+    }
 }
