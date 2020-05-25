@@ -16,9 +16,9 @@ function randomAction()
     return $actions[random_int(0, 2)];
 }
 
-function isAnswerCorrect($act, $firstNum, $secondNum, $answ)
+function isAnswerCorrect($firstNum, $secondNum, $answ)
 {
-    $correctAnswer = (string) correctAnswer($act, $firstNum, $secondNum);
+    $correctAnswer = (string) correctAnswer($firstNum, $secondNum);
 
     if ($answ === $correctAnswer) {
         return true;
@@ -27,14 +27,9 @@ function isAnswerCorrect($act, $firstNum, $secondNum, $answ)
     }
 }
 
-function correctAnswer($act, $firstNum, $secondNum)
+function correctAnswer($firstNum, $secondNum)
 {
-    if ($act === '+') {
-        return $firstNum + $secondNum;
-    } elseif ($act === '-') {
-        return $firstNum - $secondNum;
-    }
-    
+    // TODO Binary GCD algorithm here
     return $firstNum * $secondNum;
 }
 
@@ -43,23 +38,21 @@ function run()
     $attempt = 1;
 
     line("Welcome to the Brain Games!");
-    line("What is the result of the expression?\n");
+    line("Find the greatest common divisor of given numbers\n");
     $name = \cli\prompt('May I have your name?');
     line("Hello, %s!", $name, "\n");
-    //line("\n");
 
     while ($attempt < 4) {
         $firstNumber = randomNumber();
         $secondNumber = randomNumber();
-        $action = randomAction();
         $firstNumberAsString = (string) $firstNumber;
         $secondNumberAsString = (string) $secondNumber;
-        $expressionAsString = "{$firstNumberAsString} {$action} {$secondNumberAsString}";
+        $expressionAsString = "{$firstNumberAsString} {$secondNumberAsString}";
 
         line("Question: %s", $expressionAsString);
         $answer = \cli\prompt('Your answer is');
-        $isCheckGood = isAnswerCorrect($action, $firstNumber, $secondNumber, $answer);
-        $corrAnswer = correctAnswer($action, $firstNumber, $secondNumber);
+        $isCheckGood = isAnswerCorrect($firstNumber, $secondNumber, $answer);
+        $corrAnswer = correctAnswer($firstNumber, $secondNumber);
 
         if ($isCheckGood === true) {
             line("Question: {$expressionAsString}");
