@@ -30,7 +30,24 @@ function isAnswerCorrect($firstNum, $secondNum, $answ)
 function correctAnswer($firstNum, $secondNum)
 {
     // TODO Binary GCD algorithm here
-    return $firstNum * $secondNum;
+    $positiveFirstNumber = abs($firstNum);
+    $positiveSecondNumber = abs($secondNum);
+
+    if ($positiveFirstNumber === 0) {
+        return $positiveSecondNumber;
+    } elseif ($positiveSecondNumber === 0) {
+        return $positiveFirstNumber;
+    }
+
+    while ($positiveFirstNumber != $positiveSecondNumber) {
+        if ($positiveFirstNumber > $positiveSecondNumber) {
+            $positiveFirstNumber -= $positiveSecondNumber;
+        } else {
+            $positiveSecondNumber -= $positiveFirstNumber;
+        }
+    }
+
+    return $positiveFirstNumber;
 }
 
 function run()
