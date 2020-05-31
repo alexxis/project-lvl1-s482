@@ -15,3 +15,5 @@ Install and run brain-calc: <https://asciinema.org/a/333787>
 Install and run brain-gcd: <https://asciinema.org/a/334123>
 
 Install and run brain-progression: <https://asciinema.org/a/335481>
+
+Install and run brain-prime: <https://asciinema.org/a/335490>
