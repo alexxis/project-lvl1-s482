@@ -9,45 +9,50 @@ function randomNumber()
     return random_int(-100, 100);
 }
 
-function randomAction()
+function randomStep()
 {
-    $actions = ['+', '-', '*'];
-
-    return $actions[random_int(0, 2)];
+    return random_int(0, 100);
 }
 
-function isAnswerCorrect($firstNum, $secondNum, $answ)
+function randomArrayElementPosition()
 {
-    $correctAnswer = (string) correctAnswer($firstNum, $secondNum);
+    return random_int(0, 9);
+}
 
-    if ($answ === $correctAnswer) {
+function initProgression($startNum, $st)
+{
+    $arrProgression = [];
+    $arrProgression[0] = $startNum;
+
+    for ($i = 1; $i < 10; $i++) {
+        $arrProgression[$i] = $arrProgression[$i - 1] + $st;
+    }
+
+    return $arrProgression;
+}
+
+function insertHiddenElementIntoArray($arr, $place)
+{
+    $arrayForQuestion = $arr;
+    $arrayForQuestion[$place] = '..';
+
+    return $arrayForQuestion;
+}
+
+function isAnswerCorrect($srcProgression, $hiddArrElement, $answ)
+{
+    if ($answ === (string) $srcProgression[$hiddArrElement]) {
         return true;
     } else {
         return false;
     }
 }
 
-function correctAnswer($firstNum, $secondNum)
+function correctAnswer($srcProgression, $hiddArrElement)
 {
-    // TODO Binary GCD algorithm here
-    $positiveFirstNumber = abs($firstNum);
-    $positiveSecondNumber = abs($secondNum);
+    $corrAnsw = (string) $srcProgression[$hiddArrElement];
 
-    if ($positiveFirstNumber === 0) {
-        return $positiveSecondNumber;
-    } elseif ($positiveSecondNumber === 0) {
-        return $positiveFirstNumber;
-    }
-
-    while ($positiveFirstNumber != $positiveSecondNumber) {
-        if ($positiveFirstNumber > $positiveSecondNumber) {
-            $positiveFirstNumber -= $positiveSecondNumber;
-        } else {
-            $positiveSecondNumber -= $positiveFirstNumber;
-        }
-    }
-
-    return $positiveFirstNumber;
+    return $corrAnsw;
 }
 
 function run()
@@ -55,21 +60,23 @@ function run()
     $attempt = 1;
 
     line("Welcome to the Brain Games!");
-    line("Find the greatest common divisor of given numbers\n");
+    line("What the number is missing in the progression?\n");
     $name = \cli\prompt('May I have your name?');
     line("Hello, %s!", $name, "\n");
 
     while ($attempt < 4) {
         $firstNumber = randomNumber();
-        $secondNumber = randomNumber();
-        $firstNumberAsString = (string) $firstNumber;
-        $secondNumberAsString = (string) $secondNumber;
-        $expressionAsString = "{$firstNumberAsString} {$secondNumberAsString}";
+        $step = randomStep();
+        $sourceProgression = initProgression($firstNumber, $step);
+        $hiddenArrayElement = randomArrayElementPosition();
+        $finalArray = insertHiddenElementIntoArray($sourceProgression, $hiddenArrayElement);
+        $arrayAsString = implode(" ", $finalArray);
+        $expressionAsString = "{$arrayAsString}";
 
         line("Question: %s", $expressionAsString);
         $answer = \cli\prompt('Your answer is');
-        $isCheckGood = isAnswerCorrect($firstNumber, $secondNumber, $answer);
-        $corrAnswer = correctAnswer($firstNumber, $secondNumber);
+        $isCheckGood = isAnswerCorrect($sourceProgression, $hiddenArrayElement, $answer);
+        $corrAnswer = correctAnswer($sourceProgression, $hiddenArrayElement);
 
         if ($isCheckGood === true) {
             line("Question: {$expressionAsString}");
