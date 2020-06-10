@@ -38,7 +38,7 @@ function run()
         $numberAsString = (string) $number;
 
         line("Question: %s", $numberAsString);
-        $answer = \cli\prompt('Your answer is:');
+        $answer = \cli\prompt('Your answer is');
         $checkAnswer = isAnswerCorrect($number, $answer);
 
         if ($checkAnswer === true) {
