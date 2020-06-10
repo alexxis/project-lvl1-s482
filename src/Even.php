@@ -51,5 +51,7 @@ function run()
         }
     }
 
-    line("Congratulations, %s!", $name);
+    if ($attempt > 3) {
+        line("Congratulations, %s!", $name);
+    }
 }
