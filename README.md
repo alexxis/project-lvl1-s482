@@ -12,7 +12,7 @@ Install and run brain-even: <https://asciinema.org/a/338067>
 
 Install and run brain-calc: <https://asciinema.org/a/338392>
 
-Install and run brain-gcd: <https://asciinema.org/a/334123>
+Install and run brain-gcd: <https://asciinema.org/a/338402>
 
 Install and run brain-progression: <https://asciinema.org/a/335481>
 
