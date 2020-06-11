@@ -10,7 +10,7 @@ Install and run brain-games: <https://asciinema.org/a/263448>
 
 Install and run brain-even: <https://asciinema.org/a/338067>
 
-Install and run brain-calc: <https://asciinema.org/a/333787>
+Install and run brain-calc: <https://asciinema.org/a/338392>
 
 Install and run brain-gcd: <https://asciinema.org/a/334123>
 
