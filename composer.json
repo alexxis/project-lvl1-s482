@@ -1,5 +1,19 @@
 {
     "name": "alexxis/project-lvl1-s482",
+    "description": "Training package",
+    "type": "library",
+    "keywords": [
+        "php",
+        "cli"
+    ],
+    "authors": [
+        {
+            "name": "Alexey Starikov",
+            "email": "alexxisgreat@gmail.com",
+            "homepage": "https://alexxis.pro",
+            "role": "Developer"
+        }
+    ],
     "bin": [
         "bin/brain-games",
         "bin/brain-even",
@@ -7,12 +21,6 @@
         "bin/brain-gcd",
         "bin/brain-progression",
         "bin/brain-prime"
-    ],
-    "authors": [
-        {
-            "name": "Alexey Starikov",
-            "email": "alexxisgreat@gmail.com"
-        }
     ],
     "minimum-stability": "dev",
     "scripts": {
