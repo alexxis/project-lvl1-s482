@@ -28,12 +28,12 @@
     },
     "autoload": {
         "files": [
-            "src/Cli.php",
-            "src/Even.php",
-            "src/Calc.php",
-            "src/Gcd.php",
-            "src/Progression.php",
-            "src/Prime.php"
+            "games/Cli.php",
+            "games/Even.php",
+            "games/Calc.php",
+            "games/Gcd.php",
+            "games/Progression.php",
+            "games/Prime.php"
         ]
     },
     "require": {
