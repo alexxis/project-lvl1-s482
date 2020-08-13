@@ -1,7 +1,7 @@
 {
     "name": "alexxis/project-lvl1-s482",
     "description": "Training package",
-    "type": "library",
+    "type": "project",
     "keywords": [
         "php",
         "cli"
