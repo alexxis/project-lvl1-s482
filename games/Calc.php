@@ -4,11 +4,6 @@ namespace BrainGames\Calc;
 
 use function cli\line;
 
-function randomNumber()
-{
-    return random_int(-100, 100);
-}
-
 function randomAction()
 {
     $actions = ['+', '-', '*'];
