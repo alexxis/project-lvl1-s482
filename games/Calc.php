@@ -49,8 +49,8 @@ function run()
     //line("\n");
 
     while ($attempt < 4) {
-        $firstNumber = randomNumber();
-        $secondNumber = randomNumber();
+        $firstNumber = random_int(-100, 100);
+        $secondNumber = random_int(-100, 100);
         $action = randomAction();
         $firstNumberAsString = (string) $firstNumber;
         $secondNumberAsString = (string) $secondNumber;
