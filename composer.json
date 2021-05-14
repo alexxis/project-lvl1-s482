@@ -33,7 +33,9 @@
             "games/Calc.php",
             "games/Gcd.php",
             "games/Progression.php",
-            "games/Prime.php"
+            "games/Prime.php",
+            "src/Engine.php",
+            "src/Generator.php"
         ]
     },
     "require": {
