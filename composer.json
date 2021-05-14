@@ -6,6 +6,7 @@
         "php",
         "cli"
     ],
+    "license": "MIT",
     "authors": [
         {
             "name": "Alexey Starikov",
