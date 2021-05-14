@@ -3,6 +3,10 @@
 namespace Project\Lvl1\S482\Engine;
 
 use function cli\line;
+use function Project\Lvl1\S482\Generator\correctAnswerForCalc;
+use function Project\Lvl1\S482\Generator\isAnswerCorrectForCalc;
+use function Project\Lvl1\S482\Generator\isAnswerCorrectForEven;
+use function Project\Lvl1\S482\Generator\randomAction;
 
 function play($game)
 {
@@ -21,7 +25,7 @@ function play($game)
 
                 line("Question: %s", $numberAsString);
                 $answer = \cli\prompt('Your answer is');
-                $checkAnswer = \Project\Lvl1\S482\Generator\isAnswerCorrect($game, $number, $answer);
+                $checkAnswer = isAnswerCorrectForEven($game, $number, $answer);
 
                 if ($checkAnswer === true) {
                     line("Correct!");
@@ -49,15 +53,15 @@ function play($game)
             while ($attempt < 4) {
                 $firstNumber = random_int(-100, 100);
                 $secondNumber = random_int(-100, 100);
-                $action = randomAction();
+                $action = randomAction('calc');
                 $firstNumberAsString = (string) $firstNumber;
                 $secondNumberAsString = (string) $secondNumber;
                 $expressionAsString = "{$firstNumberAsString} {$action} {$secondNumberAsString}";
 
                 line("Question: %s", $expressionAsString);
                 $answer = \cli\prompt('Your answer is');
-                $isCheckGood = isAnswerCorrect($action, $firstNumber, $secondNumber, $answer);
-                $corrAnswer = correctAnswer($action, $firstNumber, $secondNumber);
+                $isCheckGood = isAnswerCorrectForCalc($action, $firstNumber, $secondNumber, $answer);
+                $corrAnswer = correctAnswerForCalc($action, $firstNumber, $secondNumber);
 
                 if ($isCheckGood === true) {
                     line("Question: {$expressionAsString}");
