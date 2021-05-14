@@ -29,7 +29,6 @@ function correctAnswer($act, $firstNum, $secondNum)
     } elseif ($act === '-') {
         return $firstNum - $secondNum;
     }
-    
     return $firstNum * $secondNum;
 }
 
