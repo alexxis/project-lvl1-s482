@@ -3,55 +3,10 @@
 namespace BrainGames\Even;
 
 use function cli\line;
-
-function randomNumber()
-{
-    return random_int(-1000, 1000);
-}
-
-function isAnswerCorrect($num, $answ)
-{
-    if ($num % 2 === 0) {
-        $correctAnswer = 'yes';
-    } else {
-        $correctAnswer = 'no';
-    }
-
-    if ($answ === $correctAnswer) {
-        return true;
-    } else {
-        return false;
-    }
-}
+use function Project\Lvl1\S482\Engine\play;
 
 function run()
 {
-    $attempt = 1;
-
     line("Welcome to the Brain Games!");
-    line("Answer \"yes\" if the number is even, otherwise answer \"no\".\n");
-    $name = \cli\prompt('May I have your name?');
-    line("Hello, %s!", $name);
-
-    while ($attempt < 4) {
-        $number = randomNumber();
-        $numberAsString = (string) $number;
-
-        line("Question: %s", $numberAsString);
-        $answer = \cli\prompt('Your answer is');
-        $checkAnswer = isAnswerCorrect($number, $answer);
-
-        if ($checkAnswer === true) {
-            line("Correct!");
-            $attempt += 1;
-        } else {
-            line("'yes' is the wrong answer ;(. The correct answer was 'no'.");
-            line("Let's try again, %s!", $name);
-            break;
-        }
-    }
-
-    if ($attempt > 3) {
-        line("Congratulations, %s!", $name);
-    }
+    play('even');
 }
