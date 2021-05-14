@@ -10,6 +10,7 @@ function play($game)
         case "even":
             $attempt = 1;
 
+            line("Welcome to the Brain Games!");
             line("Answer \"yes\" if the number is even, otherwise answer \"no\".\n");
             $name = \cli\prompt('May I have your name?');
             line("Hello, %s!", $name);
