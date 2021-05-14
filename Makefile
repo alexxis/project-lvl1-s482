@@ -1,4 +1,4 @@
 install:
 	composer install
 lint:
-	composer run-script phpcs -- --standard=PSR12 games bin
+	composer run-script phpcs -- --standard=PSR12 games bin src
