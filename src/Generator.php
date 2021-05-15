@@ -127,3 +127,23 @@ function correctAnswerForProgression($srcProgression, $hiddArrElement)
 
     return $corrAnsw;
 }
+
+function correctAnswerForPrime($num)
+{
+    for ($i = 2; $i < ceil(sqrt($num)); $i++) {
+        if ($num % $i == 0) {
+            return "no";
+        }
+    }
+
+    return "yes";
+}
+
+function isAnswerCorrectForPrime($num, $answ)
+{
+    if ($answ === correctAnswerForPrime($num)) {
+        return true;
+    } else {
+        return false;
+    }
+}
