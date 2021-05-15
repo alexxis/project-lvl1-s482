@@ -124,7 +124,45 @@ function play($game)
 
             break;
         case "progression":
-            echo "progr";
+            $attempt = 1;
+
+            line("Welcome to the Brain Games!");
+            line("What the number is missing in the progression?\n");
+            $name = \cli\prompt('May I have your name?');
+            line("Hello, %s!", $name, "\n");
+
+            while ($attempt < 4) {
+                $firstNumber = random_int(-100, 100);
+                $step = random_int(0, 100);
+                $sourceProgression = initProgression($firstNumber, $step);
+                $hiddenArrayElement = random_int(0, 9);
+                $finalArray = insertHiddenElementIntoArray($sourceProgression, $hiddenArrayElement);
+                $arrayAsString = implode(" ", $finalArray);
+                $expressionAsString = "{$arrayAsString}";
+
+                line("Question: %s", $expressionAsString);
+                $answer = \cli\prompt('Your answer is');
+                $isCheckGood = isAnswerCorrect($sourceProgression, $hiddenArrayElement, $answer);
+                $corrAnswer = correctAnswer($sourceProgression, $hiddenArrayElement);
+
+                if ($isCheckGood === true) {
+                    line("Question: {$expressionAsString}");
+                    line("Your answer: {$answer}");
+                    line("Correct!");
+                    $attempt += 1;
+                } else {
+                    line("Question: {$expressionAsString}");
+                    line("Your answer: {$answer}");
+                    line("'{$answer}' is the wrong answer ;(. The correct answer was '{$corrAnswer}'.");
+                    line("Let's try again, %s!", $name);
+                    break;
+                }
+            }
+
+            if ($attempt > 3) {
+                line("Congratulations, %s!", $name);
+            }
+
             break;
         case "prime":
             echo "prime";
