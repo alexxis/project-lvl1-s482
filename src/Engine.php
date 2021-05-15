@@ -4,8 +4,10 @@ namespace Project\Lvl1\S482\Engine;
 
 use function cli\line;
 use function Project\Lvl1\S482\Generator\correctAnswerForCalc;
+use function Project\Lvl1\S482\Generator\correctAnswerForGcd;
 use function Project\Lvl1\S482\Generator\isAnswerCorrectForCalc;
 use function Project\Lvl1\S482\Generator\isAnswerCorrectForEven;
+use function Project\Lvl1\S482\Generator\isAnswerCorrectForGcd;
 use function Project\Lvl1\S482\Generator\randomAction;
 
 function play($game)
@@ -99,8 +101,8 @@ function play($game)
 
                 line("Question: %s", $expressionAsString);
                 $answer = \cli\prompt('Your answer is');
-                $isCheckGood = isAnswerCorrect($firstNumber, $secondNumber, $answer);
-                $corrAnswer = correctAnswer($firstNumber, $secondNumber);
+                $isCheckGood = isAnswerCorrectForGcd($firstNumber, $secondNumber, $answer);
+                $corrAnswer = correctAnswerForGcd($firstNumber, $secondNumber);
 
                 if ($isCheckGood === true) {
                     line("Question: {$expressionAsString}");
