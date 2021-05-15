@@ -5,9 +5,13 @@ namespace Project\Lvl1\S482\Engine;
 use function cli\line;
 use function Project\Lvl1\S482\Generator\correctAnswerForCalc;
 use function Project\Lvl1\S482\Generator\correctAnswerForGcd;
+use function Project\Lvl1\S482\Generator\correctAnswerForProgression;
+use function Project\Lvl1\S482\Generator\initProgression;
+use function Project\Lvl1\S482\Generator\insertHiddenElementIntoArray;
 use function Project\Lvl1\S482\Generator\isAnswerCorrectForCalc;
 use function Project\Lvl1\S482\Generator\isAnswerCorrectForEven;
 use function Project\Lvl1\S482\Generator\isAnswerCorrectForGcd;
+use function Project\Lvl1\S482\Generator\isAnswerCorrectForProgression;
 use function Project\Lvl1\S482\Generator\randomAction;
 
 function play($game)
@@ -142,8 +146,8 @@ function play($game)
 
                 line("Question: %s", $expressionAsString);
                 $answer = \cli\prompt('Your answer is');
-                $isCheckGood = isAnswerCorrect($sourceProgression, $hiddenArrayElement, $answer);
-                $corrAnswer = correctAnswer($sourceProgression, $hiddenArrayElement);
+                $isCheckGood = isAnswerCorrectForProgression($sourceProgression, $hiddenArrayElement, $answer);
+                $corrAnswer = correctAnswerForProgression($sourceProgression, $hiddenArrayElement);
 
                 if ($isCheckGood === true) {
                     line("Question: {$expressionAsString}");

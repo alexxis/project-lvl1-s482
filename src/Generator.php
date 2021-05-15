@@ -91,3 +91,39 @@ function isAnswerCorrectForGcd($firstNum, $secondNum, $answ)
         return false;
     }
 }
+
+function initProgression($startNum, $st)
+{
+    $arrProgression = [];
+    $arrProgression[0] = $startNum;
+
+    for ($i = 1; $i < 10; $i++) {
+        $arrProgression[$i] = $arrProgression[$i - 1] + $st;
+    }
+
+    return $arrProgression;
+}
+
+function insertHiddenElementIntoArray($arr, $place)
+{
+    $arrayForQuestion = $arr;
+    $arrayForQuestion[$place] = '..';
+
+    return $arrayForQuestion;
+}
+
+function isAnswerCorrectForProgression($srcProgression, $hiddArrElement, $answ)
+{
+    if ($answ === (string) $srcProgression[$hiddArrElement]) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function correctAnswerForProgression($srcProgression, $hiddArrElement)
+{
+    $corrAnsw = (string) $srcProgression[$hiddArrElement];
+
+    return $corrAnsw;
+}
