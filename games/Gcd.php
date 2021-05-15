@@ -4,11 +4,6 @@ namespace BrainGames\Gcd;
 
 use function Project\Lvl1\S482\Engine\play;
 
-function randomNumber()
-{
-    return random_int(-100, 100);
-}
-
 function randomAction()
 {
     $actions = ['+', '-', '*'];
