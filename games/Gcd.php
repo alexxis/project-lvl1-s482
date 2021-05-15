@@ -4,13 +4,6 @@ namespace BrainGames\Gcd;
 
 use function Project\Lvl1\S482\Engine\play;
 
-function randomAction()
-{
-    $actions = ['+', '-', '*'];
-
-    return $actions[random_int(0, 2)];
-}
-
 function isAnswerCorrect($firstNum, $secondNum, $answ)
 {
     $correctAnswer = (string) correctAnswer($firstNum, $secondNum);
