@@ -132,7 +132,8 @@ function isAnswerCorrectForEven($game, $number, $answer)
 
 function isAnswerCorrectForCalc($act, $firstNum, $secondNum, $answ)
 {
-    $correctAnswer = (string) correctAnswerForCalc($act, $firstNum, $secondNum);
+    $game = 'calc';
+    $correctAnswer = (string) correctAnswer($game, $act, $firstNum, $secondNum);
 
     if ($answ === $correctAnswer) {
         return true;
@@ -143,7 +144,8 @@ function isAnswerCorrectForCalc($act, $firstNum, $secondNum, $answ)
 
 function isAnswerCorrectForGcd($firstNum, $secondNum, $answ)
 {
-    $correctAnswer = (string) correctAnswerForGcd($firstNum, $secondNum);
+    $game = 'gcd';
+    $correctAnswer = (string) correctAnswer($game, $firstNum, $secondNum);
 
     if ($answ === $correctAnswer) {
         return true;
@@ -183,7 +185,9 @@ function isAnswerCorrectForProgression($srcProgression, $hiddArrElement, $answ)
 
 function isAnswerCorrectForPrime($num, $answ)
 {
-    if ($answ === correctAnswerForPrime($num)) {
+    $game = 'prime';
+
+    if ($answ === correctAnswer($game, $num)) {
         return true;
     } else {
         return false;
