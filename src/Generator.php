@@ -45,6 +45,69 @@ function randomAction($game)
     }
 }
 
+function correctAnswer($game, ...$items)
+{
+    switch ($game) {
+        case "even":
+            echo "";
+            break;
+        case "calc":
+            [$act, $firstNum, $secondNum] = $items;
+
+            if ($act === '+') {
+                return $firstNum + $secondNum;
+            } elseif ($act === '-') {
+                return $firstNum - $secondNum;
+            }
+
+            return $firstNum * $secondNum;
+
+            break;
+        case "gcd":
+            [$firstNum, $secondNum] = $items;
+            $positiveFirstNumber = abs($firstNum);
+            $positiveSecondNumber = abs($secondNum);
+
+            if ($positiveFirstNumber === 0) {
+                return $positiveSecondNumber;
+            } elseif ($positiveSecondNumber === 0) {
+                return $positiveFirstNumber;
+            }
+
+            while ($positiveFirstNumber != $positiveSecondNumber) {
+                if ($positiveFirstNumber > $positiveSecondNumber) {
+                    $positiveFirstNumber -= $positiveSecondNumber;
+                } else {
+                    $positiveSecondNumber -= $positiveFirstNumber;
+                }
+            }
+
+            return $positiveFirstNumber;
+
+            break;
+        case "progression":
+            [$srcProgression, $hiddArrElement] = $items;
+            $corrAnsw = (string) $srcProgression[$hiddArrElement];
+
+            return $corrAnsw;
+
+            break;
+        case "prime":
+            [$num] = $items;
+
+            for ($i = 2; $i < ceil(sqrt($num)); $i++) {
+                if ($num % $i == 0) {
+                    return "no";
+                }
+            }
+
+            return "yes";
+
+        default:
+            echo "Uknown game for Generator";
+    }
+}
+
 function isAnswerCorrectForEven($game, $number, $answer)
 {
     switch ($game) {
@@ -76,39 +139,6 @@ function isAnswerCorrectForCalc($act, $firstNum, $secondNum, $answ)
     } else {
         return false;
     }
-}
-
-function correctAnswerForCalc($act, $firstNum, $secondNum)
-{
-    if ($act === '+') {
-        return $firstNum + $secondNum;
-    } elseif ($act === '-') {
-        return $firstNum - $secondNum;
-    }
-    return $firstNum * $secondNum;
-}
-
-function correctAnswerForGcd($firstNum, $secondNum)
-{
-    // TODO Binary GCD algorithm here
-    $positiveFirstNumber = abs($firstNum);
-    $positiveSecondNumber = abs($secondNum);
-
-    if ($positiveFirstNumber === 0) {
-        return $positiveSecondNumber;
-    } elseif ($positiveSecondNumber === 0) {
-        return $positiveFirstNumber;
-    }
-
-    while ($positiveFirstNumber != $positiveSecondNumber) {
-        if ($positiveFirstNumber > $positiveSecondNumber) {
-            $positiveFirstNumber -= $positiveSecondNumber;
-        } else {
-            $positiveSecondNumber -= $positiveFirstNumber;
-        }
-    }
-
-    return $positiveFirstNumber;
 }
 
 function isAnswerCorrectForGcd($firstNum, $secondNum, $answ)
@@ -149,24 +179,6 @@ function isAnswerCorrectForProgression($srcProgression, $hiddArrElement, $answ)
     } else {
         return false;
     }
-}
-
-function correctAnswerForProgression($srcProgression, $hiddArrElement)
-{
-    $corrAnsw = (string) $srcProgression[$hiddArrElement];
-
-    return $corrAnsw;
-}
-
-function correctAnswerForPrime($num)
-{
-    for ($i = 2; $i < ceil(sqrt($num)); $i++) {
-        if ($num % $i == 0) {
-            return "no";
-        }
-    }
-
-    return "yes";
 }
 
 function isAnswerCorrectForPrime($num, $answ)

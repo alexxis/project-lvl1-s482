@@ -3,10 +3,7 @@
 namespace Project\Lvl1\S482\Engine;
 
 use function cli\line;
-use function Project\Lvl1\S482\Generator\correctAnswerForCalc;
-use function Project\Lvl1\S482\Generator\correctAnswerForGcd;
-use function Project\Lvl1\S482\Generator\correctAnswerForPrime;
-use function Project\Lvl1\S482\Generator\correctAnswerForProgression;
+use function Project\Lvl1\S482\Generator\correctAnswer;
 use function Project\Lvl1\S482\Generator\greeting;
 use function Project\Lvl1\S482\Generator\initProgression;
 use function Project\Lvl1\S482\Generator\insertHiddenElementIntoArray;
@@ -68,7 +65,7 @@ function play($game)
                 line("Question: %s", $expressionAsString);
                 $answer = \cli\prompt('Your answer is');
                 $isCheckGood = isAnswerCorrectForCalc($action, $firstNumber, $secondNumber, $answer);
-                $corrAnswer = correctAnswerForCalc($action, $firstNumber, $secondNumber);
+                $corrAnswer = correctAnswer($game, $action, $firstNumber, $secondNumber);
 
                 if ($isCheckGood === true) {
                     line("Question: {$expressionAsString}");
@@ -106,7 +103,7 @@ function play($game)
                 line("Question: %s", $expressionAsString);
                 $answer = \cli\prompt('Your answer is');
                 $isCheckGood = isAnswerCorrectForGcd($firstNumber, $secondNumber, $answer);
-                $corrAnswer = correctAnswerForGcd($firstNumber, $secondNumber);
+                $corrAnswer = correctAnswer($game, $firstNumber, $secondNumber);
 
                 if ($isCheckGood === true) {
                     line("Question: {$expressionAsString}");
@@ -146,7 +143,7 @@ function play($game)
                 line("Question: %s", $expressionAsString);
                 $answer = \cli\prompt('Your answer is');
                 $isCheckGood = isAnswerCorrectForProgression($sourceProgression, $hiddenArrayElement, $answer);
-                $corrAnswer = correctAnswerForProgression($sourceProgression, $hiddenArrayElement);
+                $corrAnswer = correctAnswer($game, $sourceProgression, $hiddenArrayElement);
 
                 if ($isCheckGood === true) {
                     line("Question: {$expressionAsString}");
@@ -181,7 +178,7 @@ function play($game)
                 line("Question: %s", $expressionAsString);
                 $answer = \cli\prompt('Your answer is');
                 $isCheckGood = isAnswerCorrectForPrime($firstNumber, $answer);
-                $corrAnswer = correctAnswerForPrime($firstNumber);
+                $corrAnswer = correctAnswer($game, $firstNumber);
 
                 if ($isCheckGood === true) {
                     line("Question: {$expressionAsString}");
