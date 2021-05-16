@@ -7,6 +7,7 @@ use function Project\Lvl1\S482\Generator\correctAnswerForCalc;
 use function Project\Lvl1\S482\Generator\correctAnswerForGcd;
 use function Project\Lvl1\S482\Generator\correctAnswerForPrime;
 use function Project\Lvl1\S482\Generator\correctAnswerForProgression;
+use function Project\Lvl1\S482\Generator\greeting;
 use function Project\Lvl1\S482\Generator\initProgression;
 use function Project\Lvl1\S482\Generator\insertHiddenElementIntoArray;
 use function Project\Lvl1\S482\Generator\isAnswerCorrectForCalc;
@@ -22,8 +23,7 @@ function play($game)
         case "even":
             $attempt = 1;
 
-            line("Welcome to the Brain Games!");
-            line("Answer \"yes\" if the number is even, otherwise answer \"no\".\n");
+            greeting($game);
             $name = \cli\prompt('May I have your name?');
             line("Hello, %s!", $name);
 
@@ -53,8 +53,7 @@ function play($game)
         case "calc":
             $attempt = 1;
 
-            line("Welcome to the Brain Games!");
-            line("What is the result of the expression?\n");
+            greeting($game);
             $name = \cli\prompt('May I have your name?');
             line("Hello, %s!", $name, "\n");
 
@@ -93,8 +92,7 @@ function play($game)
         case "gcd":
             $attempt = 1;
 
-            line("Welcome to the Brain Games!");
-            line("Find the greatest common divisor of given numbers\n");
+            greeting($game);
             $name = \cli\prompt('May I have your name?');
             line("Hello, %s!", $name, "\n");
 
@@ -132,8 +130,7 @@ function play($game)
         case "progression":
             $attempt = 1;
 
-            line("Welcome to the Brain Games!");
-            line("What the number is missing in the progression?\n");
+            greeting($game);
             $name = \cli\prompt('May I have your name?');
             line("Hello, %s!", $name, "\n");
 
@@ -173,8 +170,7 @@ function play($game)
         case "prime":
             $attempt = 1;
 
-            line("Welcome to the Brain Games!");
-            line("Answer \"yes\" if the given number is prime. Otherwise answer \"no\".\n");
+            greeting($game);
             $name = \cli\prompt('May I have your name?');
             line("Hello, %s!", $name, "\n");
 
