@@ -45,6 +45,26 @@ function randomAction($game)
     }
 }
 
+function initProgression($startNum, $st)
+{
+    $arrProgression = [];
+    $arrProgression[0] = $startNum;
+
+    for ($i = 1; $i < 10; $i++) {
+        $arrProgression[$i] = $arrProgression[$i - 1] + $st;
+    }
+
+    return $arrProgression;
+}
+
+function insertHiddenElementIntoArray($arr, $place)
+{
+    $arrayForQuestion = $arr;
+    $arrayForQuestion[$place] = '..';
+
+    return $arrayForQuestion;
+}
+
 function correctAnswer($game, ...$items)
 {
     switch ($game) {
@@ -108,10 +128,12 @@ function correctAnswer($game, ...$items)
     }
 }
 
-function isAnswerCorrectForEven($game, $number, $answer)
+function isAnswerCorrect($game, ...$items)
 {
     switch ($game) {
         case "even":
+            [$number, $answer] = $items;
+
             if ($number % 2 === 0) {
                 $correctAnswer = 'yes';
             } else {
@@ -125,71 +147,49 @@ function isAnswerCorrectForEven($game, $number, $answer)
             }
 
             break;
+        case "calc":
+            [$act, $firstNum, $secondNum, $answ] = $items;
+            $correctAnswer = (string) correctAnswer($game, $act, $firstNum, $secondNum);
+
+            if ($answ === $correctAnswer) {
+                return true;
+            } else {
+                return false;
+            }
+
+            break;
+        case "gcd":
+            [$firstNum, $secondNum, $answ] = $items;
+            $correctAnswer = (string) correctAnswer($game, $firstNum, $secondNum);
+
+            if ($answ === $correctAnswer) {
+                return true;
+            } else {
+                return false;
+            }
+
+            break;
+        case "progression":
+            [$srcProgression, $hiddArrElement, $answ] = $items;
+
+            if ($answ === (string) $srcProgression[$hiddArrElement]) {
+                return true;
+            } else {
+                return false;
+            }
+
+            break;
+        case "prime":
+            [$num, $answ] = $items;
+
+            if ($answ === correctAnswer($game, $num)) {
+                return true;
+            } else {
+                return false;
+            }
+
+            break;
         default:
-            echo "Uknown game for the Generator";
-    }
-}
-
-function isAnswerCorrectForCalc($act, $firstNum, $secondNum, $answ)
-{
-    $game = 'calc';
-    $correctAnswer = (string) correctAnswer($game, $act, $firstNum, $secondNum);
-
-    if ($answ === $correctAnswer) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function isAnswerCorrectForGcd($firstNum, $secondNum, $answ)
-{
-    $game = 'gcd';
-    $correctAnswer = (string) correctAnswer($game, $firstNum, $secondNum);
-
-    if ($answ === $correctAnswer) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function initProgression($startNum, $st)
-{
-    $arrProgression = [];
-    $arrProgression[0] = $startNum;
-
-    for ($i = 1; $i < 10; $i++) {
-        $arrProgression[$i] = $arrProgression[$i - 1] + $st;
-    }
-
-    return $arrProgression;
-}
-
-function insertHiddenElementIntoArray($arr, $place)
-{
-    $arrayForQuestion = $arr;
-    $arrayForQuestion[$place] = '..';
-
-    return $arrayForQuestion;
-}
-
-function isAnswerCorrectForProgression($srcProgression, $hiddArrElement, $answ)
-{
-    if ($answ === (string) $srcProgression[$hiddArrElement]) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function isAnswerCorrectForPrime($num, $answ)
-{
-    $game = 'prime';
-
-    if ($answ === correctAnswer($game, $num)) {
-        return true;
-    } else {
-        return false;
+            echo "Uknown game for Generator";
     }
 }

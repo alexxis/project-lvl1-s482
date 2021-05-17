@@ -7,11 +7,7 @@ use function Project\Lvl1\S482\Generator\correctAnswer;
 use function Project\Lvl1\S482\Generator\greeting;
 use function Project\Lvl1\S482\Generator\initProgression;
 use function Project\Lvl1\S482\Generator\insertHiddenElementIntoArray;
-use function Project\Lvl1\S482\Generator\isAnswerCorrectForCalc;
-use function Project\Lvl1\S482\Generator\isAnswerCorrectForEven;
-use function Project\Lvl1\S482\Generator\isAnswerCorrectForGcd;
-use function Project\Lvl1\S482\Generator\isAnswerCorrectForPrime;
-use function Project\Lvl1\S482\Generator\isAnswerCorrectForProgression;
+use function Project\Lvl1\S482\Generator\isAnswerCorrect;
 use function Project\Lvl1\S482\Generator\randomAction;
 
 function play($game)
@@ -30,7 +26,7 @@ function play($game)
 
                 line("Question: %s", $numberAsString);
                 $answer = \cli\prompt('Your answer is');
-                $checkAnswer = isAnswerCorrectForEven($game, $number, $answer);
+                $checkAnswer = isAnswerCorrect($game, $number, $answer);
 
                 if ($checkAnswer === true) {
                     line("Correct!");
@@ -64,7 +60,7 @@ function play($game)
 
                 line("Question: %s", $expressionAsString);
                 $answer = \cli\prompt('Your answer is');
-                $isCheckGood = isAnswerCorrectForCalc($action, $firstNumber, $secondNumber, $answer);
+                $isCheckGood = isAnswerCorrect($game, $action, $firstNumber, $secondNumber, $answer);
                 $corrAnswer = correctAnswer($game, $action, $firstNumber, $secondNumber);
 
                 if ($isCheckGood === true) {
@@ -102,7 +98,7 @@ function play($game)
 
                 line("Question: %s", $expressionAsString);
                 $answer = \cli\prompt('Your answer is');
-                $isCheckGood = isAnswerCorrectForGcd($firstNumber, $secondNumber, $answer);
+                $isCheckGood = isAnswerCorrect($game, $firstNumber, $secondNumber, $answer);
                 $corrAnswer = correctAnswer($game, $firstNumber, $secondNumber);
 
                 if ($isCheckGood === true) {
@@ -142,7 +138,7 @@ function play($game)
 
                 line("Question: %s", $expressionAsString);
                 $answer = \cli\prompt('Your answer is');
-                $isCheckGood = isAnswerCorrectForProgression($sourceProgression, $hiddenArrayElement, $answer);
+                $isCheckGood = isAnswerCorrect($game, $sourceProgression, $hiddenArrayElement, $answer);
                 $corrAnswer = correctAnswer($game, $sourceProgression, $hiddenArrayElement);
 
                 if ($isCheckGood === true) {
@@ -177,7 +173,7 @@ function play($game)
 
                 line("Question: %s", $expressionAsString);
                 $answer = \cli\prompt('Your answer is');
-                $isCheckGood = isAnswerCorrectForPrime($firstNumber, $answer);
+                $isCheckGood = isAnswerCorrect($game, $firstNumber, $answer);
                 $corrAnswer = correctAnswer($game, $firstNumber);
 
                 if ($isCheckGood === true) {
