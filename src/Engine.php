@@ -3,10 +3,37 @@
 namespace Project\Lvl1\S482\Engine;
 
 use function cli\line;
-use function Project\Lvl1\S482\Generator\greeting;
 use function Project\Lvl1\S482\Generator\initProgression;
 use function Project\Lvl1\S482\Generator\insertHiddenElementIntoArray;
 use function Project\Lvl1\S482\Generator\randomAction;
+
+function greeting($game)
+{
+    switch ($game) {
+        case "even":
+            line("Welcome to the Brain Games!");
+            line("Answer \"yes\" if the number is even, otherwise answer \"no\".\n");
+            break;
+        case "calc":
+            line("Welcome to the Brain Games!");
+            line("What is the result of the expression?\n");
+            break;
+        case "gcd":
+            line("Welcome to the Brain Games!");
+            line("Find the greatest common divisor of given numbers\n");
+            break;
+        case "progression":
+            line("Welcome to the Brain Games!");
+            line("What the number is missing in the progression?\n");
+            break;
+        case "prime":
+            line("Welcome to the Brain Games!");
+            line("Answer \"yes\" if the given number is prime. Otherwise answer \"no\".\n");
+            break;
+        default:
+            echo "Uknown name for greeting!";
+    }
+}
 
 function correctAnswer($game, ...$items)
 {
