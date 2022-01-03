@@ -3,12 +3,139 @@
 namespace Project\Lvl1\S482\Engine;
 
 use function cli\line;
-use function Project\Lvl1\S482\Generator\correctAnswer;
 use function Project\Lvl1\S482\Generator\greeting;
 use function Project\Lvl1\S482\Generator\initProgression;
 use function Project\Lvl1\S482\Generator\insertHiddenElementIntoArray;
-use function Project\Lvl1\S482\Generator\isAnswerCorrect;
 use function Project\Lvl1\S482\Generator\randomAction;
+
+function correctAnswer($game, ...$items)
+{
+    switch ($game) {
+        case "even":
+            echo "";
+            break;
+        case "calc":
+            [$act, $firstNum, $secondNum] = $items;
+
+            if ($act === '+') {
+                return $firstNum + $secondNum;
+            } elseif ($act === '-') {
+                return $firstNum - $secondNum;
+            }
+
+            return $firstNum * $secondNum;
+
+            break;
+        case "gcd":
+            [$firstNum, $secondNum] = $items;
+            $positiveFirstNumber = abs($firstNum);
+            $positiveSecondNumber = abs($secondNum);
+
+            if ($positiveFirstNumber === 0) {
+                return $positiveSecondNumber;
+            } elseif ($positiveSecondNumber === 0) {
+                return $positiveFirstNumber;
+            }
+
+            while ($positiveFirstNumber != $positiveSecondNumber) {
+                if ($positiveFirstNumber > $positiveSecondNumber) {
+                    $positiveFirstNumber -= $positiveSecondNumber;
+                } else {
+                    $positiveSecondNumber -= $positiveFirstNumber;
+                }
+            }
+
+            return $positiveFirstNumber;
+
+            break;
+        case "progression":
+            [$srcProgression, $hiddArrElement] = $items;
+            $corrAnsw = (string) $srcProgression[$hiddArrElement];
+
+            return $corrAnsw;
+
+            break;
+        case "prime":
+            [$num] = $items;
+
+            for ($i = 2; $i < ceil(sqrt($num)); $i++) {
+                if ($num % $i == 0) {
+                    return "no";
+                }
+            }
+
+            return "yes";
+
+        default:
+            echo "Uknown game for Generator";
+    }
+}
+
+function isAnswerCorrect($game, ...$items)
+{
+    switch ($game) {
+        case "even":
+            [$number, $answer] = $items;
+
+            if ($number % 2 === 0) {
+                $correctAnswer = 'yes';
+            } else {
+                $correctAnswer = 'no';
+            }
+
+            if ($answer === $correctAnswer) {
+                return true;
+            } else {
+                return false;
+            }
+
+            break;
+        case "calc":
+            [$act, $firstNum, $secondNum, $answ] = $items;
+            $correctAnswer = (string) correctAnswer($game, $act, $firstNum, $secondNum);
+
+            if ($answ === $correctAnswer) {
+                return true;
+            } else {
+                return false;
+            }
+
+            break;
+        case "gcd":
+            [$firstNum, $secondNum, $answ] = $items;
+            $correctAnswer = (string) correctAnswer($game, $firstNum, $secondNum);
+
+            if ($answ === $correctAnswer) {
+                return true;
+            } else {
+                return false;
+            }
+
+            break;
+        case "progression":
+            [$srcProgression, $hiddArrElement, $answ] = $items;
+
+            if ($answ === (string) $srcProgression[$hiddArrElement]) {
+                return true;
+            } else {
+                return false;
+            }
+
+            break;
+        case "prime":
+            [$num, $answ] = $items;
+
+            if ($answ === correctAnswer($game, $num)) {
+                return true;
+            } else {
+                return false;
+            }
+
+            break;
+        default:
+            echo "Uknown game for Generator";
+    }
+}
 
 function play($game)
 {
