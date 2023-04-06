@@ -94,3 +94,4 @@ modules.xml
 
 # alexxis' rules
 .vscode/
+composer.lock
